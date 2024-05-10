@@ -1,0 +1,11 @@
+---
+Name: element-link
+After: "#linkfield"
+---
+SilverStripe\Admin\LeftAndMain:
+  extra_requirements_javascript:
+    - 'webbuilders-group/silverstripe-element-link: javascript/boot.js'
+
+SilverStripe\LinkField\Form\AbstractLinkField:
+  extensions:
+    - 'WebbuildersGroup\ElementLink\Extensions\LinkFieldExtension'

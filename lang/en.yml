@@ -1,0 +1,8 @@
+en:
+  WebbuildersGroup\ElementLink\Model\ElementLink:
+    has_one_ElementID: "Block"
+    SELECT_BLOCK: "--- Select Block ---"
+    LINKLABEL: "Block on this site"
+    MISSING_DEFAULT_TITLE: "(Block missing)"
+    BLOCK_DOES_NOT_EXIST: "Block does not exist"
+    CANNOT_VIEW_BLOCK: "Cannot view Block"
