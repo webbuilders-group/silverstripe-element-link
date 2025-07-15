@@ -4,7 +4,7 @@ namespace WebbuildersGroup\ElementLink\Forms;
 use Sheadawson\DependentDropdown\Forms\DependentDropdownField;
 use SilverStripe\Forms\FormField;
 use SilverStripe\Forms\TreeDropdownField;
-use SilverStripe\ORM\Map;
+use SilverStripe\Model\List\Map;
 use SilverStripe\View\Requirements;
 
 class ElementDropdownField extends DependentDropdownField
@@ -16,9 +16,9 @@ class ElementDropdownField extends DependentDropdownField
      * @param FormField $field
      * @return $this
      */
-    public function setDepends(FormField $field)
+    public function setDepends(FormField $field): self
     {
-        if ($this->depends) {
+        if (isset($this->depends)) {
             $this->depends
                 ->removeExtraClass('depended-on-field')
                 ->setAttribute('data-dependent-field', null);
@@ -42,7 +42,7 @@ class ElementDropdownField extends DependentDropdownField
             return parent::getSource();
         }
 
-        $val = $this->depends->Value();
+        $val = $this->depends->getValue();
 
         if (!$val) {
             $source = [];

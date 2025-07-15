@@ -47,9 +47,9 @@ class ElementLink extends SiteTreeLink
                 'Anchor',
                 ElementDropdownField::create('ElementID', _t(__CLASS__ . '.has_one_ElementID', '_Block'))
                     ->setDepends($targetPageField)
-                    ->setSource(function ($pageID) use ($blockPageClass) {
+                    ->setSourceCallback(function ($pageID) use ($blockPageClass) {
                         $page = $blockPageClass::get()->byID(intval($pageID));
-                        if (!empty($page) && $page !== false && $page->exists()) {
+                        if (!empty($page) && $page !== false && $page->exists() && $page->hasMethod('ElementalArea')) {
                             return $page->ElementalArea()->Elements()->map();
                         }
 
