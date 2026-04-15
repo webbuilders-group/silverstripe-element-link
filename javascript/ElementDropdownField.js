@@ -1,16 +1,17 @@
 (function($) {
     $.entwine('dependentdropdown', function ($) {
-        $('.depended-on-field .treedropdown[data-dependent-field]').entwine({
+        $('.depended-on-field .treedropdown[data-dependent-field] .treedropdown').entwine({
             Loading: false,
 
             onadd: function() {
-                const dependentField = $(this).attr('data-dependent-field');
+                const self = $(this).closest('.treedropdown[data-dependent-field]');
+                const dependentField = self.attr('data-dependent-field');
                 if (dependentField) {
-                    const drop = $('select[name=' + $.escapeSelector(dependentField) + ']');
+                    const drop = $('select[name=' + $.escapeSelector(dependentField) + '], select[name=' + $.escapeSelector(dependentField + '[]') + ']');
                     const depends = self.find('input[name]');
 
                     if (depends) {
-                        depends.change(function () {
+                        depends.on('change', function () {
                             if (!this.value || this.value <= 0) {
                                 drop.disable(drop.attr('data-empty') || '');
                             } else {
